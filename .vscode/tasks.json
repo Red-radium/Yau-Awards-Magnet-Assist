@@ -1,0 +1,27 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang build active file", // 与 launch.json 的 preLaunchTask 保持一致
+            "command": "/opt/homebrew/bin/g++-15", // 你的 GCC 15 路径（已确认）
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g", // 生成调试信息（F5 调试必须）
+                "${file}", // 编译当前打开的 .cpp 文件
+                "-o", // 输出可执行文件
+                "${fileDirname}/${fileBasenameNoExtension}", // macOS 可执行文件无 .exe 后缀
+                "-std=c++17" // 指定 C++ 17 标准（兼容绝大多数代码）
+            ],
+            "options": {
+                "cwd": "/opt/homebrew/bin" // GCC 所在目录（路径的目录部分）
+            },
+            "problemMatcher": ["$gcc"], // 识别 GCC 的编译错误
+            "group": {
+                "kind": "build",
+                "isDefault": true // Ctrl+Shift+B 直接触发这个任务
+            },
+            "detail": "编译器: /opt/homebrew/bin/g++-15" // 备注编译器路径，方便后续查看
+        }
+    ],
+    "version": "2.0.0"
+}
